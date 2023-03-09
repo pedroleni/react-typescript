@@ -6,7 +6,7 @@ import useCloudinary from "../hooks/useCloudinary";
 export const UserContext = createContext();
 
 export const UserContextProvider = ({ children }) => {
-  const { uploadImage } = useCloudinary();
+  const { uploadImage, deleteImage } = useCloudinary();
   const [user, setUser] = useState(() => {
     const ID = localStorage.getItem("user");
     return ID ? ID : null;
@@ -23,6 +23,7 @@ export const UserContextProvider = ({ children }) => {
 
   const logout = () => {
     localStorage.removeItem("user");
+    deleteImage;
     setUser(null);
   };
 

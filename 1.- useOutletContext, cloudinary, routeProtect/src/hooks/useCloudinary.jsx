@@ -29,21 +29,8 @@ const useCloudinary = () => {
       });
   };
 
-  const deleteImage = () => {
-    axios
-      .delete(
-        `https://api.cloudinary.com/v1_1/${publicId}/image/destroy?public_id=${publicId}&api_key=YOUR_API_KEY&api_secret=YOUR_API_SECRET`,
-      )
-      .then((response) => {
-        console.log(response);
-        // Aquí puedes manejar la respuesta de éxito
-      })
-      .catch((error) => {
-        console.log(error);
-        // Aquí puedes manejar el error
-      });
-  };
-  return { uploadImage, urlIMG };
+  const deleteImage = () => {};
+  return { uploadImage, urlIMG, deleteImage };
 };
 
 export default useCloudinary;
