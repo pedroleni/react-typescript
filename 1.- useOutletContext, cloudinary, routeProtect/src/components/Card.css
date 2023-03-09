@@ -1,0 +1,27 @@
+figure {
+  width: 30rem;
+  height: 54rem;
+  padding: 1rem;
+  box-shadow: rgba(255, 255, 255, 0.516) 0px 2px 8px 0px;
+  /* background-color: rgba(12, 14, 58, 0.612); */
+  background-image: url("https://w0.peakpx.com/wallpaper/586/862/HD-wallpaper-anime-anime-girls-digital-art-artwork-portrait-display-vertical-2d.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-attachment: fixed;
+  opacity: 0.9;
+  border-radius: 20px;
+}
+
+figure:hover {
+  box-shadow: rgba(255, 255, 255, 0.737) 0px 4px 10px 0px;
+  opacity: 1;
+}
+.imageFigure {
+  width: 90%;
+}
+.description {
+  padding: 2rem;
+  text-align: justify;
+  background-color: rgba(12, 14, 58, 0.612);
+  border-radius: 10px;
+}

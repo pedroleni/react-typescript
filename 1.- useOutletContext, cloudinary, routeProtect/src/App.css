@@ -1,0 +1,17 @@
+#root {
+  text-align: center;
+  min-height: 100vh;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.titulo {
+  font-size: 6rem;
+  font-family: "Rubik Vinyl", cursive;
+}
