@@ -63,3 +63,18 @@ li:has(> a.logout):hover {
   box-shadow: rgba(255, 255, 255, 0.516) 0px 2px 8px 0px;
   size: 240%;
 }
+.avatar{
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-left: 1rem;
+  
+}
+
+.containerUser{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+
+}

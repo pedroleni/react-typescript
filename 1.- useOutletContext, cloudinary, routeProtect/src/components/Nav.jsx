@@ -1,14 +1,11 @@
 import "./Nav.css";
 
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 
 import { UserContext } from "../Contexts/UserContext";
-
 const Nav = () => {
-  const { user, logout } = useContext(UserContext);
-  useEffect(() => {}, [user]);
-
+  const { logout, user } = useContext(UserContext);
   return (
     <>
       {user && (
@@ -20,11 +17,14 @@ const Nav = () => {
             <li>
               <NavLink to="anime">ANIME</NavLink>
             </li>
-            <li>
-              <NavLink to="/" onClick={() => logout()} className="logout">
-                LOGOUT
-              </NavLink>
-            </li>
+            <div className="containerUser">
+              <li>
+                <NavLink to="/" onClick={() => logout()} className="logout">
+                  LOGOUT
+                </NavLink>
+              </li>
+              <img className="avatar" src={localStorage.getItem("urlIMG")} alt="" />
+            </div>
           </ul>
         </nav>
       )}

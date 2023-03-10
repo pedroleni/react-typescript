@@ -22,8 +22,10 @@ export const UserContextProvider = ({ children }) => {
   };
 
   const logout = () => {
+    localStorage.removeItem("urlIMG");
     localStorage.removeItem("user");
-    deleteImage;
+
+    deleteImage();
     setUser(null);
   };
 
