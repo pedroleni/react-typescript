@@ -18,7 +18,10 @@ const Home = () => {
     <div className="containerLogin">
       {!localStorage.getItem("user") && (
         <>
-          <h2>Por favor introduzca su nombre para poder ver el contenido de la página</h2>
+          <h2>
+            Por favor introduzca su nombre y una imagen para poder ver el contenido de la
+            página
+          </h2>
           <input type="text" ref={textInput} />
           <div className="custom-input-file">
             <input
