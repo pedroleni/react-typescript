@@ -4,8 +4,11 @@ import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 
 import { UserContext } from "../Contexts/UserContext";
+import Avatar from "./Avatar";
+
 const Nav = () => {
   const { logout, user } = useContext(UserContext);
+
   return (
     <>
       {user && (
@@ -27,7 +30,9 @@ const Nav = () => {
                   />
                 </NavLink>
               </li>
-              <img className="avatar" src={localStorage.getItem("urlIMG")} alt="" />
+
+              <Avatar />
+              {/* <img className="avatar" src={localStorage.getItem("urlIMG")} alt="" /> */}
 
               <h2 className="titleUser">{`  Hi ${user}`}</h2>
             </div>

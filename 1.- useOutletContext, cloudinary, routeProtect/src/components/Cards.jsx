@@ -1,6 +1,8 @@
 import "./Cards.css";
 
 import React from "react";
+import { Link } from "react-router-dom";
+
 const Cards = ({ data }) => {
   return (
     <>
@@ -31,13 +33,14 @@ const Cards = ({ data }) => {
         Object.prototype.toString.call(data) !== "[object Array]" &&
           data.data.anime.map((animeSingle) => (
             <figure key={animeSingle._id}>
-              <h1 className="tituloCards">{animeSingle.name}</h1>
-              <img
-                className="imageFigure"
-                src={animeSingle.images[0]}
-                alt={animeSingle.name}
-              />
-              <p className="description">{animeSingle.description[0]}</p>
+              <Link to={`/anime/${animeSingle._id}`}>
+                <h1 className="tituloCards">{animeSingle.name}</h1>
+                <img
+                  className="imageFigure"
+                  src={animeSingle.images[0]}
+                  alt={animeSingle.name}
+                />
+              </Link>
             </figure>
           ))
       }

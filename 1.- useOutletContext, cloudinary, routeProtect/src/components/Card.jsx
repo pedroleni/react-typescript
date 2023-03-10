@@ -11,12 +11,6 @@ const Card = ({ data }) => {
         <p className="description">{data.description[0]}</p>
       </figure>
     </>
-
-    //  <figure>
-    //      <h1>{data.name}</h1>
-    //      <img className="imageFigure" src={data.images[0]} alt={data.name}/>
-    //      <p className="description">{data.description[0]}</p>
-    //  </figure>
   );
 };
 

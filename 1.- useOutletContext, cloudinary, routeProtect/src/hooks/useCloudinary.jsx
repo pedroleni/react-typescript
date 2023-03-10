@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 const useCloudinary = () => {
-  const [urlIMG, setUrlIMG] = useState(() => localStorage.getItem("urlIMG") || null);
+  const [urlIMG, setUrlIMG] = useState(() => localStorage.getItem("urlIMG"));
   const [publicId, setPublicId] = useState(null);
   const uploadImage = (file) => {
     const formData = new FormData();
@@ -20,8 +20,8 @@ const useCloudinary = () => {
         },
       )
       .then((response) => {
-        setUrlIMG(response.data.secure_url);
         localStorage.setItem("urlIMG", response.data.secure_url);
+        setUrlIMG(response.data.secure_url);
         console.log(response.data.secure_url);
         setPublicId(response.data.public_id);
         return response.data.secure_url;
@@ -33,8 +33,7 @@ const useCloudinary = () => {
 
   useEffect(() => {}, [urlIMG]);
 
-  const deleteImage = async () => {};
-  return { uploadImage, urlIMG, deleteImage, setUrlIMG };
+  return { uploadImage, urlIMG, setUrlIMG };
 };
 
 export default useCloudinary;
