@@ -32,8 +32,6 @@ const Nav = () => {
               </li>
 
               <Avatar />
-              {/* <img className="avatar" src={localStorage.getItem("urlIMG")} alt="" /> */}
-
               <h2 className="titleUser">{`  Hi ${user}`}</h2>
             </div>
           </ul>
