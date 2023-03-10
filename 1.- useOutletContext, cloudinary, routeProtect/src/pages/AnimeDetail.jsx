@@ -6,9 +6,6 @@ import Card from "../components/Card";
 const AnimeDetail = () => {
   const { id } = useParams();
   const [requestAnime] = useOutletContext();
-
-  console.log("id", id);
-
   const filterData = requestAnime.data?.anime.filter(
     (animeSingle) => animeSingle._id == id,
   );
