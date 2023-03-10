@@ -1,4 +1,4 @@
-import "./Card.css";
+import "./Cards.css";
 
 import React from "react";
 const Cards = ({ data }) => {
