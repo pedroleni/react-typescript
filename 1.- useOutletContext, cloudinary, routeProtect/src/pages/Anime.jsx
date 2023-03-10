@@ -1,6 +1,8 @@
 import "./Anime.css";
+
 import React from "react";
 import { useOutletContext } from "react-router-dom";
+
 import Cards from "../components/Cards";
 
 const Anime = () => {
