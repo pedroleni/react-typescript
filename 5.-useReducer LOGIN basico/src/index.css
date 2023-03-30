@@ -1,0 +1,10 @@
+#root {
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+    height: 100VH;
+    display: FLEX;
+    flex-direction: COLUMN;
+    justify-content: CENTER;
+    align-items: CENTER;
+  }
