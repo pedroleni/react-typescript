@@ -14,7 +14,7 @@ export const todosApi = createApi({
 
     getTodo: builder.query({
       query: (todoId) => `/todos/${todoId}`,
-      expires: 60000, // un minuto
+      expires: 6000, // un minuto
     }),
   }),
 });
