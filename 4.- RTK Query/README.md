@@ -2,7 +2,6 @@
 
 RTK Query es una librería de gestión de caché y consultas para aplicaciones React y Redux Toolkit. Proporciona una forma fácil y sencilla de manejar el estado de los datos que se obtienen de una API, además de incluir varias características útiles, como gestión automática del caché, paginación, reintentos automáticos en caso de errores y mucho más.
 
-
 RTK Query es una librería independiente de Redux, pero está diseñada para trabajar bien con Redux Toolkit. Utiliza un enfoque basado en el modelo para definir las consultas y mutaciones, y utiliza automáticamente el caché para mejorar el rendimiento y reducir la cantidad de solicitudes a la API. También se integra bien con React Suspense y React Hooks.
 
 Además de la gestión de caché y las consultas de datos, RTK Query también proporciona una forma fácil de realizar mutaciones en la API, con soporte para acciones asincrónicas y control del estado de carga. También incluye una variedad de opciones de configuración para personalizar el comportamiento de las consultas y mutaciones.
