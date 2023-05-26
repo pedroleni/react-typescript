@@ -12,7 +12,11 @@ const AnimeDetail = () => {
 
   return (
     <>
-      <Card key={filterData[0]._id} data={filterData[0]} />
+      {typeof filterData != "undefined" ? (
+        <Card key={filterData[0]?._id} data={filterData[0]} />
+      ) : (
+        <p className="loading">Cargando ...</p>
+      )}
     </>
   );
 };

@@ -7,7 +7,6 @@ import { UserContext } from "../Contexts/UserContext";
 const Manga = () => {
   const [requestManga] = useOutletContext();
   const { login, user } = useContext(UserContext);
-  console.log(user);
   return <div className="gallery"></div>;
 };
 

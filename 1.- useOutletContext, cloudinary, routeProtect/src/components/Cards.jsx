@@ -37,7 +37,7 @@ const Cards = ({ data }) => {
                 <h1 className="tituloCards">{animeSingle.name}</h1>
                 <img
                   className="imageFigure"
-                  src={animeSingle.images[0]}
+                  src={animeSingle.image}
                   alt={animeSingle.name}
                 />
               </Link>

@@ -18,7 +18,7 @@ const Home = () => {
     <div className="containerLogin">
       {!localStorage.getItem("user") && (
         <>
-          <h2>
+          <h2 className="tituloWhite">
             Por favor introduzca su nombre y una imagen para poder ver el contenido de la
             página
           </h2>

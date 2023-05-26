@@ -6,9 +6,9 @@ const Card = ({ data }) => {
   return (
     <>
       <figure>
-        <h1 className="tituloCards">{data.name}</h1>
-        <img className="imageFigure" src={data.images[0]} alt={data.name} />
-        <p className="description">{data.description[0]}</p>
+        <h1 className="tituloCards tituloWhite">{data.name}</h1>
+        <img className="imageFigure" src={data.image} alt={data.name} />
+        <p className="description">{data.description}</p>
       </figure>
     </>
   );
