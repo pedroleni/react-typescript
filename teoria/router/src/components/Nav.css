@@ -1,0 +1,41 @@
+.btn-nav {
+  background: none;
+  border: none;
+  width: 120px;
+  height: 30px;
+  margin-top: 1rem;
+}
+
+/* a.active .btn-nav {
+  border-bottom: 1px black solid;
+} */
+
+/* a.active button {
+  border-bottom: 1px black solid;
+} */
+
+/* .active .btn-nav {
+  border-bottom: 1px black solid;
+} */
+
+/* .active {
+  & .btn-nav {
+    border-bottom: 1px black solid;
+  }
+} */
+
+/* .btn-nav {
+  .active & {
+    border-bottom: 1px black solid;
+  }
+
+  @media (width > 500px) {
+    color: red;
+  }
+} */
+
+.btn-nav {
+  .active & {
+    border-bottom: 1px black solid;
+  }
+}
