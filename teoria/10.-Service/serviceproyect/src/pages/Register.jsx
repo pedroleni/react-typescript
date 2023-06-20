@@ -5,11 +5,18 @@ import { useEffect, useState } from "react";
 
 import Uploadfile from "../components/Uploadfile";
 import { registerUser } from "../services/API_user/user.service";
+import Spinner from "../components/Spinner";
+import useRegisterError from "../hooks/useRegisterError";
 
 const Register = () => {
   const { register, handleSubmit } = useForm();
   const [res, setRes] = useState({});
   const [send, setSend] = useState(false);
+  const [okRegister, setOkRegister] = useState(false);
+
+  //! ------------------------------------------------------------------------------
+  //? 1) funcion que se encarga del formulario - de la data del formulario
+  //! ------------------------------------------------------------------------------
 
   const formSubmit = async (formData) => {
     const inputFile = document.getElementById("file-upload").files;
@@ -40,10 +47,22 @@ const Register = () => {
     }
   };
 
+  //! ------------------------------------------------------------------------------
+  //? 2) funcion que se encarga del formulario- de la data del formulario
+  //! ------------------------------------------------------------------------------
   useEffect(() => {
     console.log(res);
+    useRegisterError(res, setOkRegister, setRes);
   }, [res]);
 
+  //! ------------------------------------------------------------------------------
+  //? 3) Estados de navegacion ----> lo veremos en siguiente proyectos
+  //! ------------------------------------------------------------------------------
+
+  if (okRegister) {
+    console.log("res", res);
+    console.log("registro correcto ya puedes navegar");
+  }
   return (
     <>
       <div className="form-wrap">
@@ -121,7 +140,7 @@ const Register = () => {
               disabled={send}
               style={{ background: send ? "#49c1a388" : "#49c1a2" }}
             >
-              Register
+              {send ? <Spinner /> : "Register"}
             </button>
           </div>
           <p className="bottom-text">
