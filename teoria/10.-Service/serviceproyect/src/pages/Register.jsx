@@ -2,13 +2,12 @@ import { useForm } from "react-hook-form";
 import "./Register.css";
 
 import { useEffect, useState } from "react";
-
-import Uploadfile from "../components/Uploadfile";
+import { Uploadfile, Spinner } from "../components";
 import { registerUser } from "../services/API_user/user.service";
-import Spinner from "../components/Spinner";
-import useRegisterError from "../hooks/useRegisterError";
+import { useRegisterError } from "../hooks";
+import { Link } from "react-router-dom";
 
-const Register = () => {
+export const Register = () => {
   const { register, handleSubmit } = useForm();
   const [res, setRes] = useState({});
   const [send, setSend] = useState(false);
@@ -95,6 +94,7 @@ const Register = () => {
               password
             </label>
           </div>
+
           <div className="email_container form-group">
             <input
               className="input_user"
@@ -107,58 +107,56 @@ const Register = () => {
             <label htmlFor="custom-input" className="custom-placeholder">
               email
             </label>
-          </div>
-          <div className="sexo">
-            <input
-              type="radio"
-              name="sexo"
-              id="hombre"
-              value="hombre"
-              {...register("gender")}
-            />
-            <label htmlFor="hombre" className="label-radio hombre">
-              Hombre
-            </label>
-            <input
-              type="radio"
-              name="sexo"
-              id="mujer"
-              value="mujer"
-              {...register("gender")}
-            />
-            <label htmlFor="mujer" className="label-radio mujer">
-              Mujer
-            </label>
-          </div>
 
-          <Uploadfile />
+            <div className="sexo">
+              <input
+                type="radio"
+                name="sexo"
+                id="hombre"
+                value="hombre"
+                {...register("gender")}
+              />
+              <label htmlFor="hombre" className="label-radio hombre">
+                Hombre
+              </label>
+              <input
+                type="radio"
+                name="sexo"
+                id="mujer"
+                value="mujer"
+                {...register("gender")}
+              />
+              <label htmlFor="mujer" className="label-radio mujer">
+                Mujer
+              </label>
+            </div>
+            <Uploadfile />
+          </div>
 
           <div className="btn_container">
             <button
               className="btn"
               type="submit"
               disabled={send}
-              style={{ background: send ? "#49c1a388" : "#49c1a2" }}
+              style={{ background: send ? "#49c1a388" : "#2f7a67" }}
             >
-              {send ? <Spinner /> : "Register"}
+              Register
             </button>
           </div>
           <p className="bottom-text">
             <small>
               By clicking the Sign Up button, you agree to our{" "}
-              <a href="#">Terms & Conditions</a> and{" "}
-              <a href="#">Privacy Policy</a>.
+              <Link className="anchorCustom">Terms & Conditions</Link> and{" "}
+              <Link className="anchorCustom">Privacy Policy</Link>.
             </small>
           </p>
         </form>
       </div>
-      <footer>
-        <p>
-          Already have an account? <a href="#">Login Here</a>
+      <div className="footerForm">
+        <p className="parrafoLogin">
+          Already have an account? <Link to="/login">Login Here</Link>
         </p>
-      </footer>
+      </div>
     </>
   );
 };
-
-export default Register;

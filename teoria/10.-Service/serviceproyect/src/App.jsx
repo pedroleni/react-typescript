@@ -1,10 +1,16 @@
+import { Outlet } from "react-router-dom";
 import "./App.css";
-import Register from "./pages/Register";
+import { Footer, Header } from "./components";
 
 const App = () => {
   return (
     <>
-      <Register />
+      <Header />
+      <main>
+        <Outlet />
+      </main>
+
+      <Footer />
     </>
   );
 };

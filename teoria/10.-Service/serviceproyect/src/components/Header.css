@@ -1,0 +1,104 @@
+header {
+  height: 20vh;
+  width: 100vw;
+  background-color: #2f7a67;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-nav {
+  background-color: black;
+  height: 30px;
+  border-radius: 3px;
+  color: white;
+  width: 113px;
+  margin: 1rem;
+}
+.titleHeaderBlack {
+  position: absolute;
+  color: white;
+  top: 2px;
+}
+
+.titleContainer {
+  color: #183f35;
+  width: 360px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.titleFatherContainer {
+  color: #183f35;
+  width: 360px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  width: 100px;
+}
+
+.iconNav {
+  width: 60px;
+}
+
+.iconNav.home {
+  width: 60px;
+  transform: scale(1.2);
+}
+
+nav {
+  display: flex;
+  gap: 1rem;
+}
+
+.whiteContainer {
+  width: 100vw;
+  height: 1vh;
+  background-color: white;
+}
+
+.iconLogout {
+  transform: scale(0.8);
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border: solid 7px black;
+  border-radius: 50%;
+}
+
+.profileCircle {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: solid black 6px;
+}
+
+a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.iconDashBoard {
+  width: 60px;
+  height: 60px;
+  border-radius: 50px;
+}
+
+@media (max-width: 700px) {
+  header {
+    flex-direction: column;
+  }
+  .logo {
+    width: 50px;
+  }
+  .titleFatherContainer {
+    width: 263px;
+  }
+}

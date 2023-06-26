@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import "./Uploadfile.css";
 import { useForm } from "react-hook-form";
-const Uploadfile = ({ registerForm }) => {
+export const Uploadfile = ({ registerForm }) => {
   const { register, handleSubmit } = useForm();
   const ekUpload = () => {
     const Init = () => {
@@ -99,5 +99,3 @@ const Uploadfile = ({ registerForm }) => {
     </div>
   );
 };
-
-export default Uploadfile;
