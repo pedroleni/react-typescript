@@ -1,22 +1,43 @@
 import { useForm } from "react-hook-form";
 import "./Login.css";
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, Navigate } from "react-router-dom";
+import { loginUser } from "../services/API_user/user.service";
+import { useLoginError } from "../hooks";
+import { useAuth } from "../context/authContext";
 
 export const Login = () => {
   const { handleSubmit, register } = useForm();
   const [res, setRes] = useState({});
   const [send, setSend] = useState(false);
   const [loginOk, setLoginOk] = useState(false);
+  const { userLogin, setUser } = useAuth();
 
   //! 1) ------------------ FUNCION QUE GESTIONA EL FORMULARIO----------
-  const formSubmit = (formData) => {
-    console.log(formData);
+  const formSubmit = async (formData) => {
+    setSend(true);
+    setRes(await loginUser(formData));
+    setSend(false);
   };
 
   //! 2) ------------------ LOS USEEFFECT QUE GESTIONAN LA RESPUESTA: ERRORES Y 200
 
+  useEffect(() => {
+    setUser(() => null);
+  }, []);
+  useEffect(() => {
+    useLoginError(res, setLoginOk, userLogin);
+  }, [res]);
+
   //! 3) ------------------ ESTADOS DE NAVEGACION O ESTADOS DE FUNCIONALIDADES OK
+
+  if (loginOk) {
+    if (res.data.user.check == false) {
+      return <Navigate to="/verifyCode" />;
+    } else {
+      return <Navigate to="/dashboard" />;
+    }
+  }
 
   return (
     <>
@@ -59,7 +80,7 @@ export const Login = () => {
               disabled={send}
               style={{ background: send ? "#49c1a388" : "#49c1a2" }}
             >
-              LOGIN
+              {send ? "Cargando ....." : "LOGIN"}
             </button>
           </div>
           <p className="bottom-text">

@@ -5,9 +5,11 @@ import { useEffect, useState } from "react";
 import { Uploadfile, Spinner } from "../components";
 import { registerUser } from "../services/API_user/user.service";
 import { useRegisterError } from "../hooks";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
+import { useAuth } from "../context/authContext";
 
 export const Register = () => {
+  const { allUser, setAllUser, bridgeData } = useAuth();
   const { register, handleSubmit } = useForm();
   const [res, setRes] = useState({});
   const [send, setSend] = useState(false);
@@ -51,7 +53,8 @@ export const Register = () => {
   //! ------------------------------------------------------------------------------
   useEffect(() => {
     console.log(res);
-    useRegisterError(res, setOkRegister, setRes);
+    useRegisterError(res, setOkRegister, setRes, setAllUser);
+    if (res?.status == 200) bridgeData("ALLUSER");
   }, [res]);
 
   //! ------------------------------------------------------------------------------
@@ -61,6 +64,7 @@ export const Register = () => {
   if (okRegister) {
     console.log("res", res);
     console.log("registro correcto ya puedes navegar");
+    return <Navigate to="/verifyCode" />;
   }
   return (
     <>

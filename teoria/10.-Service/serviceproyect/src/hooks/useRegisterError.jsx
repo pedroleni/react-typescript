@@ -1,11 +1,16 @@
 import Swal from "sweetalert2/dist/sweetalert2.all.js";
-export const useRegisterError = (res, setRegisterOk, setRes) => {
+
+export const useRegisterError = (res, setRegisterOk, setRes, setAllUser) => {
   //? si la respuesta es ok ---- > directamente esta el status en la primera clave es decir: res.status
   //? si la respuesta no esta ok--> res.response.status
   //! ------------------ 200 : todo ok
   if (res?.status == 200) {
     console.log("entro en el if 🎉");
+    const dataToString = JSON.stringify(res);
+    localStorage.setItem("data", dataToString);
     setRegisterOk(() => true);
+    //setAllUser(() => res.data);
+
     Swal.fire({
       icon: "success",
       title: "Welcome to my Page 💌",

@@ -18,6 +18,18 @@ export const AuthContextProvider = ({ children }) => {
     }
   });
 
+  //! ALLUSER -----solo cuando me registro para guardar la respuesta--
+
+  const [allUser, setAllUser] = useState({
+    data: {
+      confirmationCode: "",
+      user: {
+        password: "",
+        email: "",
+      },
+    },
+  });
+
   const navigate = useNavigate();
 
   //! -----------------------------------------------------------------------
@@ -48,8 +60,39 @@ export const AuthContextProvider = ({ children }) => {
     navigate("/login");
   };
 
+  //! -----------------------------------------------------------------------
+  //? -------- PUENTE PARA CUANDO TENGAMOS PROBLEMAS DE ASYNCRONIA ----------
+  //! -----------------------------------------------------------------------
+
+  const bridgeData = (state) => {
+    const data = localStorage.getItem("data");
+    const dataJson = JSON.parse(data);
+    console.log(dataJson);
+    switch (state) {
+      case "ALLUSER":
+        setAllUser(dataJson);
+        localStorage.removeItem("data");
+
+        break;
+
+      default:
+        break;
+    }
+  };
+
   // UseMemo memoriza el return de una funcion
-  const value = useMemo(() => ({ user, setUser, userLogin, logout }), [user]);
+  const value = useMemo(
+    () => ({
+      user,
+      setUser,
+      userLogin,
+      logout,
+      allUser,
+      setAllUser,
+      bridgeData,
+    }),
+    [user, allUser]
+  );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
