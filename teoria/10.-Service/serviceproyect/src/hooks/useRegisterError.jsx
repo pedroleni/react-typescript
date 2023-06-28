@@ -26,7 +26,7 @@ export const useRegisterError = (res, setRegisterOk, setRes, setAllUser) => {
     Swal.fire({
       icon: "error",
       title: "Oops...",
-      text: "User already exist!❎",
+      text: "Please , your email is incorrect !❎",
       showConfirmButton: false,
       timer: 1500,
     });

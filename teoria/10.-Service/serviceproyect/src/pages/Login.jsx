@@ -26,7 +26,8 @@ export const Login = () => {
     setUser(() => null);
   }, []);
   useEffect(() => {
-    useLoginError(res, setLoginOk, userLogin);
+    console.log(res);
+    useLoginError(res, setLoginOk, userLogin, setRes);
   }, [res]);
 
   //! 3) ------------------ ESTADOS DE NAVEGACION O ESTADOS DE FUNCIONALIDADES OK
