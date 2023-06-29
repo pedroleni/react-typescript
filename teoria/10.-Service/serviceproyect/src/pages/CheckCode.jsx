@@ -3,13 +3,17 @@ import { useForm } from "react-hook-form";
 import "./CheckCode.css";
 import { useEffect, useState } from "react";
 import { checkCodeConfirmationUser } from "../services/API_user/user.service";
-import { useCheckCodeError } from "../hooks";
+import { useAutoLogin, useCheckCodeError } from "../hooks";
+import { Navigate } from "react-router-dom";
 
 export const CheckCode = () => {
   const [res, setRes] = useState({});
   const [send, setSend] = useState(false);
   const [okCheck, setOkCheck] = useState(false);
   const [reloadPageError, setReloadPageError] = useState(false);
+
+  //const [okAutoLogin, setOkAutoLogin] = useState(false);
+
   const [deleteUser, setDeleteUser] = useState(false);
   const { allUser, userLogin, setUser, user } = useAuth();
   const { register, handleSubmit } = useForm();
@@ -64,15 +68,21 @@ export const CheckCode = () => {
 
   //!3) ----------------- ESTADOS DE NAVEGACION O DE CONFIRMACION DE QUE LA FUNCIONALIDAD ESTA OK ----
   if (okCheck) {
-    console.log("💥💢💥💢");
+    if (!localStorage.getItem("user")) {
+      // autologin
+      setOkCheck(() => false);
+      useAutoLogin(allUser, userLogin, setOkCheck);
+    } else {
+      return <Navigate to="/dashboard" />;
+    }
   }
 
   if (deleteUser) {
-    console.log(" te mando al registro");
+    return <Navigate to="/register" />;
   }
 
   if (reloadPageError) {
-    console.log(" por recargar la pagina te logueas te mando al login");
+    return <Navigate to="/login" />;
   }
   return (
     <>

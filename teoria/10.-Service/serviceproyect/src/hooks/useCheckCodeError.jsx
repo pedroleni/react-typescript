@@ -9,6 +9,8 @@ export const useCheckCodeError = (
 ) => {
   //? si la respuesta es ok ---- > directamente esta el status en la primera clave es decir: res.status
   //? si la respuesta no esta ok--> res.response.status
+
+  console.log("entro ");
   //! ------------------ 200 : todo ok ---> testCheckOk: true
   if (res?.data?.testCheckOk?.toString() == "true") {
     // comprobamos que vengas del login con el localStorage
@@ -23,15 +25,14 @@ export const useCheckCodeError = (
       const customUserString = JSON.stringify(customUser);
       setUser(() => customUser);
       localStorage.setItem("user", customUserString);
-      setOkCheck(() => true);
-      Swal.fire({
-        icon: "success",
-        title: "Ok correct code ✅",
-        showConfirmButton: false,
-        timer: 1500,
-      });
-      setRes(() => {});
     }
+    setOkCheck(() => true);
+    Swal.fire({
+      icon: "success",
+      title: "Ok correct code ✅",
+      showConfirmButton: false,
+      timer: 1500,
+    });
   }
   //! ------------------ 200 : todo ok ---> testCheckOk: false
   if (res?.data?.testCheckOk?.toString() == "false") {
