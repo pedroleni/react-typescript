@@ -76,3 +76,12 @@ export const deleteUser = async () => {
     .then((res) => res)
     .catch((error) => error);
 };
+
+//! --------------------- RESEND CODE --------------------------------
+
+export const resendCodeConfirmationUser = async (formData) => {
+  console.log(formData);
+  return APIuser.post("/users/resend", formData)
+    .then((res) => res)
+    .catch((error) => error);
+};

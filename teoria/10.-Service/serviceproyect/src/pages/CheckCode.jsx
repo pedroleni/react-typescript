@@ -2,18 +2,19 @@ import { useAuth } from "../context/authContext";
 import { useForm } from "react-hook-form";
 import "./CheckCode.css";
 import { useEffect, useState } from "react";
-import { checkCodeConfirmationUser } from "../services/API_user/user.service";
+import {
+  checkCodeConfirmationUser,
+  resendCodeConfirmationUser,
+} from "../services/API_user/user.service";
 import { useAutoLogin, useCheckCodeError } from "../hooks";
 import { Navigate } from "react-router-dom";
+import { ButtonReSend } from "../components";
 
 export const CheckCode = () => {
   const [res, setRes] = useState({});
   const [send, setSend] = useState(false);
   const [okCheck, setOkCheck] = useState(false);
   const [reloadPageError, setReloadPageError] = useState(false);
-
-  //const [okAutoLogin, setOkAutoLogin] = useState(false);
-
   const [deleteUser, setDeleteUser] = useState(false);
   const { allUser, userLogin, setUser, user } = useAuth();
   const { register, handleSubmit } = useForm();
@@ -24,7 +25,6 @@ export const CheckCode = () => {
 
     if (userLocal == null) {
       /// -----> este usuario viene del registro porque no se a logado previamente
-
       /// ---> recordar alllUser es la res que recibo del registro, solo disponible cuando he echo un registro previo
       const customFormData = {
         email: allUser.data.user.email,
@@ -41,10 +41,6 @@ export const CheckCode = () => {
         email: user.email,
         confirmationCode: parseInt(formData.confirmationCode),
       };
-      console.log(
-        "🚀 ~ file: CheckCode.jsx:38 ~ formSubmit ~ customFormData:",
-        customFormData
-      );
 
       //! llamada al servicio
       setSend(true);
@@ -52,7 +48,6 @@ export const CheckCode = () => {
       setSend(false);
     }
   };
-  const handleReSend = () => {};
 
   //!2) ---------------- USEEFFECT  QUE GESTIONAN LOS ERRRORES Y EL 200 CON UN CUSTOMhook -----
   useEffect(() => {
@@ -115,25 +110,16 @@ export const CheckCode = () => {
               Verify Code
             </button>
           </div>
-          <div className="btn_container">
-            <button
-              id="btnResend"
-              className="btn"
-              disabled={send}
-              style={{ background: send ? "#49c1a388" : "#49c1a2" }}
-              onClick={() => handleReSend()}
-            >
-              Resend Code
-            </button>
-          </div>
-
-          <p className="bottom-text">
-            <small>
-              If the code is not correct ❌, your user will be deleted from the
-              database and you will need to register again.{" "}
-            </small>
-          </p>
         </form>
+        <div className="btn_container">
+          <ButtonReSend setReloadPageError={setReloadPageError} />
+        </div>
+        <p className="bottom-text">
+          <small>
+            If the code is not correct ❌, your user will be deleted from the
+            database and you will need to register again.{" "}
+          </small>
+        </p>
       </div>
     </>
   );
