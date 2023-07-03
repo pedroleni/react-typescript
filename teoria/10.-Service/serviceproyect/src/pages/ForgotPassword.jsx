@@ -28,7 +28,7 @@ export const ForgotPassword = () => {
 
   if (forgotOk) {
     console.log("envio de la contraseña correcto");
-    //return <Navigate to="/login" />;
+    return <Navigate to="/login" />;
   }
 
   return (
