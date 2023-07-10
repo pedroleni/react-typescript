@@ -3,3 +3,7 @@ export * from "./Footer";
 export * from "./Spinner";
 export * from "./Uploadfile";
 export * from "./ButtonResend";
+export * from "./Protected";
+export * from "./ProtectedCheckChildren"
+export * from "./ChangePassword"
+export * from "./FormProfile"

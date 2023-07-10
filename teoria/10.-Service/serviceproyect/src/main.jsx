@@ -11,7 +11,10 @@ import {
   Profile,
   Register,
 } from "./pages";
+
 import { AuthContextProvider } from "./context/authContext.jsx";
+import { Protected, ProtectedCheckChildren } from "./components";
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <BrowserRouter basename="/">
     <AuthContextProvider>
@@ -20,9 +23,30 @@ ReactDOM.createRoot(document.getElementById("root")).render(
           <Route index element={<Home />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/verifyCode" element={<CheckCode />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route
+            path="/verifyCode"
+            element={
+              <ProtectedCheckChildren>
+                <CheckCode />
+              </ProtectedCheckChildren>
+            }
+          />
+          <Route
+            path="/profile"
+            element={
+              <Protected>
+                <Profile />
+              </Protected>
+            }
+          />
+          <Route
+            path="/dashboard"
+            element={
+              <Protected>
+                <Dashboard />
+              </Protected>
+            }
+          />
           <Route path="/forgotpassword" element={<ForgotPassword />} />
         </Route>
       </Routes>
