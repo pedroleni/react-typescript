@@ -6,3 +6,4 @@ export * from "./useResendCode";
 export * from "./useForgotPassword";
 export * from "./useDeleteUser"
 export * from "./useChangePasswordError"
+export * from "./useUpdateError"

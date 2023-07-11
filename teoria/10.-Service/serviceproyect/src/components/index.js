@@ -7,3 +7,4 @@ export * from "./Protected";
 export * from "./ProtectedCheckChildren"
 export * from "./ChangePassword"
 export * from "./FormProfile"
+export * from "./FigureUser"
