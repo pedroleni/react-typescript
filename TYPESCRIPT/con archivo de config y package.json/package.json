@@ -1,0 +1,26 @@
+{
+  "name": "ts-demo",
+  "version": "1.0.0",
+  "description": "Proyecto de ejemplo para el desarrollo de TS",
+  "main": "index.js",
+  "scripts": {
+    "tsNode": "cd src && ts-node index.ts",
+    "start": "nodemon",
+    "build": "tsc",
+    "build:prod": "rimraf ./build && tsc",
+    "start:prod": "npm run build:prod  && nodemon build/index.js"
+  },
+  "keywords": [
+    "typescript",
+    "ts"
+  ],
+  "author": "Pedro Lerida Nieto",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^18.7.23",
+    "nodemon": "^2.0.20",
+    "rimraf": "^5.0.1",
+    "ts-node": "^10.9.1",
+    "typescript": "5.1.6"
+  }
+}
