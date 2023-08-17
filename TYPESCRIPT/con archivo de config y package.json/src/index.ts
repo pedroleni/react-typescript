@@ -114,6 +114,204 @@ let Profesor : Profesor = {
 console.log("🚀 ~ file: index.ts:89 ~ Profersor:", Profesor)
 
 
-///!!! -----------------------> objetos grandes de las apis!!
+///!!! -----------------------> interface y extends
 
-let dataType = data 
+
+interface Person {
+  nombre : string 
+
+}
+
+interface Superhero {
+  power: string 
+}
+
+
+interface Hero extends Person, Superhero{
+  city: string
+}
+
+const hulk: Hero = {
+  nombre: "Hulk",
+  power: "Fuerte de narices",
+  city: "NY"
+
+
+
+}
+
+
+//! ---------TYPES  -------------
+
+
+type SuperHeroType = {
+  name: string,
+  city: string,
+  age: number
+
+}
+
+type gender = {
+  gender: "hombre"| "mujer"
+}
+
+const superman : SuperHeroType & Person= {
+  nombre: "lucas",
+  name:"Suprman",
+  city: "GOthan",
+  age: 2500
+}
+
+
+const avengers : SuperHeroType[]=[
+  {
+  name:"Suprman",
+  city: "GOthan",
+  age: 2500
+},
+{
+  name:"Suprman",
+  city: "GOthan",
+  age: 2500
+},{
+  name:"Suprman",
+  city: "GOthan",
+  age: 2500
+}
+]
+
+
+//! -----types intersection 
+
+type alumn ={
+  name: string,
+  age: number
+}
+type adress={
+  calle: string,
+  numero: number
+}
+
+type alumnComplete = alumn & adress
+
+const PeterAlumn : alumnComplete = {
+  name: "Pedro",
+  age: 30,
+  calle: "guindos",
+  numero: 44
+
+}
+
+//! ------------------literal 
+
+type Tech = "Javascript" | "Typescript" | "Node"
+const myTech : Tech = "Node"
+
+
+//! --------------------- literal numero
+
+const selectUnDia = (dia: 1| 2|3|4|5|6|7)=>{
+
+}
+// -----> error esto no es asignable --> selectUnDia("hola")
+//! ----------------- funcioones
+const gamer = "Pedro"
+let personGamer = "Raul"
+
+
+const printHello = (name = "Pedro" )=>{
+  console.log("Hola que tal "+name)
+  return name
+
+}
+
+printHello()
+
+
+// //! ------------------- clases abstractas 
+
+// abstract class Animal {
+//   name : string
+//   constructor(name: string){
+//     this.name = name
+
+//   }
+//   abstract hacerSonido(): void
+// }
+
+// abstract class Perro extends Animal{
+//   hacerRuido(){
+//     console.log("guau")
+
+//   }
+// }
+
+//  let miPerro : Perro  = new  Perro("dalton")
+
+//! tipos condicionales 
+//TODO -----------------------> MIRAR EJEMPLO APLICACION NASA CALCULAR MARS ONE
+type EsNumero<T> = T extends number ? boolean : number
+
+
+
+let resultado: EsNumero<456547> 
+resultado = true
+
+
+
+//! TIPO OPCIONAL ----------------------
+
+const saludar = (nombre?: string)=>{
+
+}
+
+interface Dog {
+  age? :number,
+  nombre: string
+}
+
+const miPerro : Dog= {
+nombre: "Currito"
+}
+
+//! ------ tipo de parametro de la funcion restante (operador rest)
+
+
+const printElement= (primerParametro: string, ...restElemntParametre: string[])=>{
+  console.log(primerParametro)
+  console.log(restElemntParametre)
+
+}
+
+printElement("Lucas", "lorena", "RAUL", "KIKE")
+
+
+//! -------- sobrecarga de funciones en typescript
+
+function calcularArea(base:number, altura: number): number;
+function calcularArea(lado: number): number;
+function calcularArea(arg1:number, arg2?:number): number{
+
+  if(arg2){
+    return arg1 * arg2
+  }else{
+    return arg1* arg1
+  }
+
+}
+
+let areRectangulo = calcularArea(5,10)
+console.log("🚀 ~ file: index.ts:304 ~ areRectangulo:", areRectangulo)
+let areaCuadrado = calcularArea(5)
+console.log("🚀 ~ file: index.ts:306 ~ areaCuadrado:", areaCuadrado)
+
+
+
+ //! ------tipo date
+
+let fechaActual : Date = new Date()
+console.log("🚀 ~ file: index.ts:313 ~ fechaActual:", fechaActual)
+
+
+
+ 
